@@ -56,4 +56,4 @@ def classify_message(msg):
     print(f"\nYour message: {msg}")
     print(f"Prediction: {'Spam' if prediction == 1 else 'Ham'}")
 
-classify_message("You've won a lamborghini")
+classify_message("You've won a $1000 gift card!")
