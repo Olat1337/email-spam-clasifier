@@ -49,3 +49,11 @@ print(f"\nModel trained. Accuracy: {accuracy:.4f}")
 
 print("\nClassification Report:")
 print(classification_report(y_test, y_pred, target_names=["Ham", "Spam"]))
+
+def classify_message(msg):
+    msg_vector = vectorizer.transform([msg])
+    prediction = model.predict(msg_vector)[0]
+    print(f"\nYour message: {msg}")
+    print(f"Prediction: {'Spam' if prediction == 1 else 'Ham'}")
+
+classify_message("You've won a lamborghini")
