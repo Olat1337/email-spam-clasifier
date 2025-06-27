@@ -1,6 +1,7 @@
 import pandas as pd
 import urllib.request
 import zipfile
+from sklearn.model_selection import train_test_split
 
 url = "https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip"
 urllib.request.urlretrieve(url, "smsspamcollection.zip")
@@ -10,4 +11,18 @@ with zipfile.ZipFile("smsspamcollection.zip", "r") as zip_ref:
 
 df = pd.read_csv("data/SMSSpamCollection", sep='\t', header=None, names=["label", "message"])
 
+print(f"Dataset loaded! Shape: {df.shape}")
 print(df.head())
+
+df['label_num'] = df['label'].map({'ham': 0, 'spam': 1})
+
+X_train, X_test, y_train, y_test = train_test_split(
+    df['message'],
+    df['label_num'],
+    test_size=0.2,
+    random_state=42
+)
+
+print(f"\nData split done:")
+print(f"Training samples: {len(X_train)}")
+print(f"Testing samples: {len(X_test)}")
