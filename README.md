@@ -17,3 +17,8 @@ A simple machine learning project in Python that classifies SMS messages as **sp
 - scikit-learn
 - CountVectorizer (Bag-of-Words model)
 - Naive Bayes classifier
+
+## Install dependencies:
+
+```bash
+pip install -r requirements.txt
